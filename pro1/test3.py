@@ -124,3 +124,4 @@ del dic['번호'] #삭제
 print(dic.keys()) #dict_keys(['파이썬', '자바', '금요일'])
 print(dic.values()) #dict_values(['뱀', '커피', 'wow'])
 
+
