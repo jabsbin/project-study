@@ -24,11 +24,13 @@ bts.co = '빅히트 엔터테이먼트'
 bts.sing()
 print('bts 소속사 : ', bts.co)
 
+
 print('-----')
 ive = Singer()
 ive.sing()
 print(type(ive))
 # print('ive 소속사 : ', ive.co) # AttributeError: 'Singer' object has no attribute 'co'
+
 
 print()
 Singer.title_song = '긴 여름은 가고~~~'

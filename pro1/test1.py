@@ -42,7 +42,7 @@ print('키워드(예약어) 목록:', keyword.kwlist)
 # 주의 : 예약어는 사용자의 이름으로 사용하면 안됨
 
 print()
-print('\ntypr(자료형) 확인') # \n : 다음행으로 이동 
+print('\ntype(자료형) 확인') # \n : 다음행으로 이동 
 print(5, type(5))
 print(5.4, type(5.4))
 print(3 + 4j, type(True))
