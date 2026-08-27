@@ -39,7 +39,7 @@ for v in colors:
     print(v, end = " ")
 
 print()
-print('iter() : 반목 가능한 객체를 하나씩 꺼낼 수 있는 상태로 만들어 주는 함수')
+print('iter() : 반복 가능한 객체를 하나씩 꺼낼 수 있는 상태로 만들어 주는 함수')
 iterator = iter(colors)
 for v in iterator:
     print(v, end = ' ')

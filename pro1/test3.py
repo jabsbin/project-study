@@ -37,7 +37,7 @@ family.remove('나') #삭제
 print(family)
 family.insert(0, '할머니') # 0 번 째에 할머니 삽입
 print(family)
-family.extend(['삼촌','고모','조카'])
+family.extend(['삼촌','고모','조카']) # 통째로 붙여서 확장
 print(family)
 family += ['이모'] # 추가
 print(family)

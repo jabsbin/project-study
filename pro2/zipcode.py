@@ -33,8 +33,8 @@ try:
 
                 total_sales = total_sales + amount # 전체 판매금액
 
-    top_employee = max(employee_sales, key=employee_sales.get) # get을 이용하여 키를 통해 값을 확인
-    top_amount = employee_sales[top_employee]
+    top_employee = max(employee_sales, key=employee_sales.get) # get을 이용하여 키를 통해 value값을 확인하여 가장 많이 판매한 사람을 찾음.
+    top_amount = employee_sales[top_employee]  # 위 에서 찾은 판매왕의 키를 이용해 벨류 값 가져옴
 
     print(f"전체 판매 금액 : {total_sales}원")
     print(f"판매왕 : {top_employee}")
@@ -42,10 +42,10 @@ try:
     with open('sales_report.txt', mode='w', encoding='utf-8') as writes:
         writes.write("직원별 판매 실적\n\n")
 
-        for name, amount in employee_sales.items():
+        for name, amount in employee_sales.items(): # 딕셔너리에 있는 모든 키값과 벨류값을 꺼내옴.
             writes.write(f"{name} : {amount}원\n")
 
-        writes.write(f'\n전체 판매 금액 : {total_sales}\n')
+        writes.write(f'\n전체 판매 금액 : {total_sales}원\n')
         writes.write(f'판매왕 : {top_employee} ({top_amount}원)\n')
 
     print()
