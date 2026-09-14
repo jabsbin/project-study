@@ -44,3 +44,7 @@ emp2 = PartTimeEmployee("한국인", 80, 10500)
 emp1.show_salary()
 print()
 emp2.show_salary()
+
+# 추상 클래스를 사용하는 이유는 한마디로 하면 
+# 여러 자식 클래스가 반드시 가져야 할 공통 규칙을 정하고
+# 

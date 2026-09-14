@@ -44,6 +44,8 @@ iterator = iter(colors)
 for v in iterator:
     print(v, end = ' ')
 
+
+
 print()
 for idx, d in enumerate(colors, start=0): # enumerate는 인덱스와 값을 반환해줌
     print(idx, ' ', d)
