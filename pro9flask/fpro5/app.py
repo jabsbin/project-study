@@ -19,5 +19,19 @@ def get_result():
     return render_template("get_result.html", name=name, age=age)
     # get 방식인 경우 args 사용
 
+@app.route("/post_form")
+def post_form():
+    return render_template("post_form.html");
+
+@app.route("/post_result", methods=['POST'])
+def post_result():
+    name = request.form.get("username")
+    email = request.form.get("email")
+    return render_template("post_result.html", name=name, email=email)
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000);
+
+# 쿠키는 클라이언트에 저장된 것, 만료일이 있어 일정 기간이나 시간이 지나면 자동삭제, 사용자가 직접보고 조작 가능해서 보안 취약
+# 세션은 서버에 저장된 것, 중요 정보는 서버에 두고 세션 ID만 클라이언트에 보내 안전.
