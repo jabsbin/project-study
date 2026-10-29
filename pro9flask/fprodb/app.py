@@ -71,22 +71,22 @@ def dbshow():
     else:
         statsdata = "통계 대상 자료가 없어요"
 
-    # 부서별 직급별 직원 수 교차표
-    if not df.empty:
-        crosst = pd.crosstab(
-            index=df['부서명'], columns=df['직급'], margins=True, margins_name='합계'
-        )
-        crossdata = crosst.to_html()
-    else:
-        crossdata = "교차표 대상 자료가 없어요"
+        # 부서별 직급별 직원 수 교차표
+        if not df.empty:
+            crosst = pd.crosstab(
+                index=df['부서명'], columns=df['직급'], margins=True, margins_name='합계'
+            )
+            crossdata = crosst.to_html()
+        else:
+            crossdata = "교차표 대상 자료가 없어요"
 
-    # 조회 결과 유무와 관계없이 응답 반환
-    return render_template("dbshow.html",
-        jikwondata=jikwondata,
-        statsdata=statsdata,
-        crossdata=crossdata,
-        dept=escape(dept)  # xss 방지
-    )
+        # return render_template("dbshow.html", jikwondata=df.to_html(index=False))
+        return render_template("dbshow.html", \
+                            jikwondata=jikwondata,
+                            statsdata=statsdata,
+                            crossdata=crossdata,
+                            dept=escape(dept)  # xss 방지
+        )
 
 
 

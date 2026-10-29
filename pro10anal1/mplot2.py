@@ -87,3 +87,9 @@ fdata.plot(kind='bar')  # <== 요거
 plt.xlabel("time")
 plt.ylabel("data")
 plt.show()
+
+
+
+
+
+
