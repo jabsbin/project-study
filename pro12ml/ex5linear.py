@@ -5,21 +5,26 @@
 # 정량적인 모델을 생성
 
 import statsmodels.api as sm
-from sklearn.datasets import make_regression
+from sklearn.linear_model import LinearRegression
 import numpy as np
 
 np.random.seed(1)
 
-x, y, _= make_regression(n_samples=50, n_features=1, bias=50, coef=True, noise=50)
-print(x)   # 2차원 , [[-1.70073563]...
-print(y)   # 1차원 , [-102.17214291...
+# 공부 시간과 시험 점수 데이터
+# 독립변수(x, feature) : 공부 시간(1 ~ 10)
+x = np.linspace(1, 10, 50).reshape(-1, 1)   # 2차원
+print(x)
+# 종속변수(y, label, class) : 시험 점수 -- 점수 = 5 * 공부시간 + 40 다소 오차가 있는 자료
+y = 5 * x.ravel() + 40 + np.random.normal(0, 3, 50)
+print(y)
+
 r = np.corrcoef(x.ravel(), y)[0, 1]
 print(f'상관계수 : {r:.4f}')   # 매우 강한 양의 상관관계
 
 print('\n모델 작성 방법 1 : LinearRegression 사용 - 모델 생성')
 from sklearn.linear_model import LinearRegression
 model = LinearRegression()
-fit_model = model.fit(x, y)
+fit_model = model.fit(x, y)   # 내부에서 아래와 같은 작업을 진행
 # 1) 독립변수(x)와 종속변수(y)를 입력 받음
 # 2) 예측값과 실제값 사이의 오차제곱합이 최소가 되도록 계산
 # 3) 최적의 회귀계수(기울기, 절편)를 구함
@@ -34,8 +39,14 @@ print('절편(편향, bias):', fit_model.intercept_)
 y_newpred1 = fit_model.predict(x[[0]])  # 기존 데이터 0번째를 입력값
 print('예측값1 : ', y_newpred1)   # 41.09112298
 
-y_newpred2 = fit_model.predict(np.array([[0.12345], [0.3], [0.5]]))
-print('예측값 2 : ', y_newpred2)  # 70.73952904  84.77960419 100.68453214
+# 여러 개의 예측값 확인
+new_x = np.array([[2.34], [6.21], [8.123]])
+Y_new_pred = fit_model.predict(new_x)
+for hour, score in zip(new_x.ravel(), Y_new_pred):
+    print(f'공부시간 :{hour:.0f}시간 -> 예상 점수:{score:.2f}점')
+# 공부시간 :2시간 -> 예상 점수:51.20점
+# 공부시간 :6시간 -> 예상 점수:71.07점
+# 공부시간 :8시간 -> 예상 점수:80.89점
 
 
 
